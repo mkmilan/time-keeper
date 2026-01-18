@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bon de prestation</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <div>
+          <h1>Bon de prestation</h1>
+          <p class="subtitle">Daily timesheet entry</p>
+        </div>
+        <div class="meta">
+          <a class="link" href="/admin.html">Admin</a>
+          <div class="field">
+            <label for="date-input-0">Date (DDMMYY)</label>
+            <div class="date-input" id="date-inputs">
+              <input id="date-input-0" type="text" inputmode="numeric" maxlength="1" />
+              <input id="date-input-1" type="text" inputmode="numeric" maxlength="1" />
+              <input id="date-input-2" type="text" inputmode="numeric" maxlength="1" />
+              <input id="date-input-3" type="text" inputmode="numeric" maxlength="1" />
+              <input id="date-input-4" type="text" inputmode="numeric" maxlength="1" />
+              <input id="date-input-5" type="text" inputmode="numeric" maxlength="1" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="user-select">Name</label>
+            <select id="user-select">
+              <option value="">Select worker</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sap-input">SAP n°</label>
+            <input id="sap-input" type="text" readonly />
+          </div>
+        </div>
+      </header>
+
+      <section class="sheet">
+        <div class="table-wrap">
+          <table class="lines-table">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Imputation</th>
+                <th>Time</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="lines-body"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2" class="total-label">TOTAL</td>
+                <td class="total-value" id="total-hours">0.00</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="table-actions">
+            <button type="button" id="add-line">Add line</button>
+          </div>
+        </div>
+        <aside class="helper">
+          <h2>Minutes helper</h2>
+          <table>
+            <tbody>
+              <tr><td>10 min</td><td>0.17</td></tr>
+              <tr><td>20 min</td><td>0.33</td></tr>
+              <tr><td>30 min</td><td>0.50</td></tr>
+              <tr><td>40 min</td><td>0.67</td></tr>
+              <tr><td>50 min</td><td>0.83</td></tr>
+            </tbody>
+          </table>
+        </aside>
+      </section>
+
+      <section class="panel">
+        <h2>Shift</h2>
+        <div class="shift-group">
+          <label><input type="radio" name="shift" value="day" /> Day</label>
+          <label><input type="radio" name="shift" value="early" /> Early</label>
+          <label><input type="radio" name="shift" value="late" /> Late</label>
+          <label><input type="radio" name="shift" value="night" /> Night</label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Extras</h2>
+        <div class="extras">
+          <label class="extra-row">
+            <input type="checkbox" data-extra="vuilWerkHours" /> Vuil werk
+            <input type="text" inputmode="decimal" data-extra-input="vuilWerkHours" disabled />
+          </label>
+          <label class="extra-row">
+            <input type="checkbox" data-extra="supportsHours" /> Supports
+            <input type="text" inputmode="decimal" data-extra-input="supportsHours" disabled />
+          </label>
+          <label class="extra-row">
+            <input type="checkbox" data-extra="wachtvergoedingHours" /> Wachtvergoeding
+            <input type="text" inputmode="decimal" data-extra-input="wachtvergoedingHours" disabled />
+          </label>
+          <label class="extra-row">
+            <input type="checkbox" data-extra="km" /> Km
+            <input type="text" inputmode="decimal" data-extra-input="km" disabled />
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="actions">
+          <button type="button" id="save-btn">Save</button>
+          <button type="button" id="clear-btn">Clear</button>
+        </div>
+        <div id="status" class="status"></div>
+        <div id="errors" class="errors"></div>
+      </section>
+    </main>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>

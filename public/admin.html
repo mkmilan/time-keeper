@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin - Bon de prestation</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <div>
+          <h1>Admin</h1>
+          <p class="subtitle">Timesheet reporting</p>
+        </div>
+        <div class="meta">
+          <a class="link" href="/">Worker form</a>
+        </div>
+      </header>
+
+      <section class="panel">
+        <h2>Daily user lookup</h2>
+        <div class="filters">
+          <label>
+            User
+            <select id="day-user">
+              <option value="">Select user</option>
+            </select>
+          </label>
+          <label>
+            Date (DDMMYY)
+            <input type="text" id="day-date" placeholder="120126" maxlength="6" />
+          </label>
+          <button type="button" id="day-run">Search</button>
+        </div>
+        <div class="table-wrap">
+          <table class="lines-table" id="day-table">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Imputation</th>
+                <th>Time</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2" class="total-label">TOTAL</td>
+                <td class="total-value" id="day-total">0.00</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="actions">
+          <button type="button" id="day-add-line">Add line</button>
+          <button type="button" id="day-save" class="secondary">Save changes</button>
+        </div>
+        <p class="summary" id="day-summary"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Daily shift lookup</h2>
+        <div class="filters">
+          <label>
+            Shift
+            <select id="shift-select">
+              <option value="">Select shift</option>
+              <option value="day">Day</option>
+              <option value="early">Early</option>
+              <option value="late">Late</option>
+              <option value="night">Night</option>
+            </select>
+          </label>
+          <label>
+            Date (DDMMYY)
+            <input type="text" id="shift-date" placeholder="120126" maxlength="6" />
+          </label>
+          <button type="button" id="shift-run">Search</button>
+        </div>
+        <div class="table-wrap">
+          <table class="lines-table" id="shift-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Project</th>
+                <th>Imputation</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3" class="total-label">TOTAL</td>
+                <td class="total-value" id="shift-total">0.00</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="summary" id="shift-summary"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Timesheets</h2>
+        <div class="filters">
+          <label>
+            From (DDMMYY)
+            <input type="text" id="ts-from" placeholder="120126" maxlength="6" />
+          </label>
+          <label>
+            To (DDMMYY)
+            <input type="text" id="ts-to" placeholder="310126" maxlength="6" />
+          </label>
+          <label>
+            User
+            <select id="ts-user">
+              <option value="">All</option>
+            </select>
+          </label>
+          <label>
+            Shift
+            <select id="ts-shift">
+              <option value="">All</option>
+              <option value="day">Day</option>
+              <option value="early">Early</option>
+              <option value="late">Late</option>
+              <option value="night">Night</option>
+            </select>
+          </label>
+          <button type="button" id="ts-run">Run</button>
+        </div>
+        <div class="table-wrap">
+          <table class="lines-table" id="ts-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>User</th>
+                <th>SAP</th>
+                <th>Shift</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Project lines</h2>
+        <div class="filters">
+          <label>
+            From (DDMMYY)
+            <input type="text" id="pl-from" placeholder="120126" maxlength="6" />
+          </label>
+          <label>
+            To (DDMMYY)
+            <input type="text" id="pl-to" placeholder="310126" maxlength="6" />
+          </label>
+          <label>
+            Project code (6 digits)
+            <input type="text" id="pl-project" placeholder="058908" />
+          </label>
+          <button type="button" id="pl-run">Run</button>
+        </div>
+        <div class="table-wrap">
+          <table class="lines-table" id="pl-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>User</th>
+                <th>Shift</th>
+                <th>Project</th>
+                <th>Imputation</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div id="admin-status" class="status"></div>
+        <div id="admin-errors" class="errors"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Add worker</h2>
+        <div class="filters">
+          <label>
+            Full name
+            <input type="text" id="add-fullname" placeholder="Jane Doe" />
+          </label>
+          <label>
+            SAP number
+            <input type="text" id="add-sap" placeholder="446999" />
+          </label>
+          <label>
+            Role
+            <select id="add-admin">
+              <option value="false">Worker</option>
+              <option value="true">Admin</option>
+            </select>
+          </label>
+          <label>
+            Active
+            <select id="add-active">
+              <option value="true">Active</option>
+              <option value="false">Inactive</option>
+            </select>
+          </label>
+          <button type="button" id="add-user-btn">Add worker</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/admin.js"></script>
+  </body>
+</html>

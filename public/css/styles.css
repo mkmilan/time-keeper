@@ -1,0 +1,305 @@
+:root {
+  --bg: #f5f1ea;
+  --paper: #fffaf2;
+  --ink: #2f2b25;
+  --muted: #6f6558;
+  --accent: #b45f3b;
+  --line: #d9cbb9;
+  --shadow: rgba(47, 43, 37, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top left, #f7e6d4, var(--bg));
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 0 0 6px;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.extra-row input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  font-size: 14px;
+}
+
+.date-input {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.date-input input {
+  text-align: center;
+  font-weight: 600;
+  padding: 8px 0;
+  min-width: 0;
+  min-height: 34px;
+  font-size: 14px;
+}
+
+.sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 24px;
+  align-items: start;
+}
+
+.table-wrap {
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.lines-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lines-table th,
+.lines-table td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.lines-table th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.lines-table input,
+.lines-table select {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.total-label {
+  text-align: right;
+  font-weight: 700;
+}
+
+.total-value {
+  font-weight: 700;
+}
+
+.table-actions {
+  margin-top: 12px;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--muted);
+}
+
+.helper {
+  background: #fdf6ec;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px dashed var(--line);
+}
+
+.helper h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.helper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.helper td {
+  padding: 6px 0;
+}
+
+.panel {
+  margin-top: 24px;
+  background: var(--paper);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+}
+
+.link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.filters label {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.filters input,
+.filters select {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.filters button {
+  align-self: end;
+}
+
+.shift-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.shift-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.extras {
+  display: grid;
+  gap: 12px;
+}
+
+.extra-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.extra-row input[type="text"] {
+  max-width: 180px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.status {
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.errors {
+  margin-top: 12px;
+  color: #9b1d20;
+}
+
+.summary {
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.group-row td {
+  font-weight: 700;
+  background: #f9f1e6;
+}
+
+.group-total td {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.error-field {
+  border-color: #9b1d20 !important;
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .sheet {
+    grid-template-columns: 1fr;
+  }
+}
